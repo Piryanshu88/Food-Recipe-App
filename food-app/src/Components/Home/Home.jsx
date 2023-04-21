@@ -1,8 +1,8 @@
 import React from "react";
-import ico from "../../Assets/daco.png";
 import img from "../../Assets/recipeHome.png";
 import styles from "./Home.module.css";
 import { Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Categories } from "./Categories";
 export const Home = () => {
   return (
     <div>
@@ -36,6 +36,7 @@ export const Home = () => {
           </Text>
           <p className={styles.text_underline_tag}></p>
         </Flex>
+        <Categories />
       </div>
     </div>
   );
