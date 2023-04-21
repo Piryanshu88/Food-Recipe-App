@@ -22,6 +22,21 @@ export const Home = () => {
         </div>
         <Image src={img} alt="" />
       </div>
+
+      <div className={styles.category_section}>
+        <Flex
+          marginTop={"30px"}
+          paddingTop="40px"
+          justifyContent={"center"}
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Text fontSize={"xl"} fontWeight="500">
+            Our Hot Recipes
+          </Text>
+          <p className={styles.text_underline_tag}></p>
+        </Flex>
+      </div>
     </div>
   );
 };
