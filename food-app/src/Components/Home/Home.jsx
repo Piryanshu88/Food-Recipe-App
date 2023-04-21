@@ -2,7 +2,7 @@ import React from "react";
 import ico from "../../Assets/daco.png";
 import img from "../../Assets/recipeHome.png";
 import styles from "./Home.module.css";
-import { Flex, Heading, Image, Text } from "@chakra-ui/react";
+import { Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 export const Home = () => {
   return (
     <div>
