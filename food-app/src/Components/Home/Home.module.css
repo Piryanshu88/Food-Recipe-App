@@ -1,9 +1,14 @@
 .home_section_text {
+  width: 50%;
+  line-height: 3rem;
 }
 .home_section {
   display: flex;
+  padding: 15px 25px;
   align-items: center;
   justify-content: space-between;
   width: 90%;
   margin: auto;
+  border: 1px solid red;
+  margin-top: 30px;
 }
