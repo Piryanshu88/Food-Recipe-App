@@ -1,5 +1,8 @@
 .navbar_section {
   display: flex;
   justify-content: space-between;
-  padding: 10px 30px;
+  padding: 15px 30px;
+}
+.desktop_search_bar {
+  width: 400px;
 }

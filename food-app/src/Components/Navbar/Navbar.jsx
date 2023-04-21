@@ -15,7 +15,7 @@ export const Navbar = () => {
       <Flex fontSize={"2xl"} fontWeight="600" color={"green.600"}>
         PIRYANSHU
       </Flex>
-      <Flex gap={"14px"}>
+      <Flex>
         <Button
           variant={"ghost"}
           borderRadius="0"
@@ -65,20 +65,20 @@ export const Navbar = () => {
           Contact us
         </Button>
       </Flex>
-      <Flex>
+      <div className={styles.desktop_search_bar}>
         <InputGroup>
           <InputLeftElement
             pointerEvents="none"
-            children={<SearchIcon color="gray.300" />}
+            children={<SearchIcon color="gray.500" />}
           />
           <Input
-            placeholder="Type any Recipes name here"
+            placeholder="Type any recipes name here"
             focusBorderColor="green.300"
             borderColor={"green.300"}
             width="100%"
           />
         </InputGroup>
-      </Flex>
+      </div>
     </div>
   );
 };
