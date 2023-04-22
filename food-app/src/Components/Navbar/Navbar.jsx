@@ -5,11 +5,19 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Stack,
 } from "@chakra-ui/react";
 import React from "react";
 import styles from "./Navbar.module.css";
 import { SearchIcon } from "@chakra-ui/icons";
+import { useState } from "react";
 export const Navbar = () => {
+  const [autoComplete, setAutoComplete] = useState([]);
+  const [searchVal, setSearchVal] = useState("");
+  const handleSubmit = (e) => {
+    setSearchVal(e);
+    console.log(searchVal);
+  };
   return (
     <div className={styles.navbar_section}>
       <Flex fontSize={"2xl"} fontWeight="600" color={"green.600"}>
@@ -73,10 +81,13 @@ export const Navbar = () => {
           />
           <Input
             placeholder="Type any recipes name here"
+            value={searchVal}
+            onInput={(e) => handleSubmit(e.target.value)}
             focusBorderColor="green.300"
             borderColor={"green.300"}
             width="100%"
           />
+          <Stack></Stack>
         </InputGroup>
       </div>
     </div>

@@ -5,4 +5,5 @@
 }
 .desktop_search_bar {
   width: 400px;
+  position: relative;
 }
