@@ -38,6 +38,21 @@ export const Home = () => {
         </Flex>
         <Categories />
       </div>
+
+      <div className={styles.ingredeints_section}>
+        <Flex
+          marginTop={"30px"}
+          paddingTop="40px"
+          justifyContent={"center"}
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Text fontSize={"xl"} fontWeight="500">
+            Select By Ingredeints
+          </Text>
+          <p className={styles.text_underline_tag}></p>
+        </Flex>
+      </div>
     </div>
   );
 };
