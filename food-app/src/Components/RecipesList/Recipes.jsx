@@ -31,7 +31,9 @@ export const Recipes = () => {
   }, []);
   return (
     <div className={styles.recipes_box}>
-      <div className={styles._recipes_filter_box}></div>
+      <div className={styles.recipes_filter_box}>
+        <Text>Filter Box</Text>
+      </div>
       <div className={styles.recipes_card_box}>
         <div>
           {data?.map((el) => {
