@@ -35,9 +35,11 @@ export const Recipes = () => {
       <div className={styles.recipes_card_box}>
         <div>
           {data?.map((el) => {
-            <Link to="/">
-              <RecipeCard {...el} key={el?.id} />
-            </Link>;
+            return (
+              <Link to="/">
+                <RecipeCard {...el} key={el?.id} />
+              </Link>
+            );
           })}
         </div>
       </div>
