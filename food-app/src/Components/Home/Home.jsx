@@ -52,6 +52,7 @@ export const Home = () => {
           </Text>
           <p className={styles.text_underline_tag}></p>
         </Flex>
+        
       </div>
     </div>
   );

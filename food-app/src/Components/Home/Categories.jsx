@@ -16,6 +16,7 @@ import dessert from "../../Assets/dessert.png";
 import rice from "../../Assets/rice.png";
 import curry from "../../Assets/curry.png";
 import spa from "../../Assets/spaghetti.png";
+import { Link } from "react-router-dom";
 
 const PreviousBtn = (props) => {
   const { className, onClick } = props;
@@ -149,22 +150,24 @@ export const Categories = () => {
       <Slider {...settings} arrows={false}>
         {recipe?.map((el, i) => {
           return (
-            <Stack
-              cursor={"pointer"}
-              textAlign={"center"}
-              key={i}
-              justifyContent={"center"}
-              alignItems="center"
-              padding={"10px"}
-              _hover={{ transform: "scale(1.4)", transition: "800ms" }}
-            >
-              <Image
-                src={el?.img}
-                margin="auto"
-                // _hover={{ transform: "scale(1.4)", transition: "800ms" }}
-              />
-              <Text fontWeight={"500"}>{el?.name}</Text>
-            </Stack>
+            <Link to={`/recipes/${el.url}`}>
+              <Stack
+                cursor={"pointer"}
+                textAlign={"center"}
+                key={i}
+                justifyContent={"center"}
+                alignItems="center"
+                padding={"10px"}
+                _hover={{ transform: "scale(1.4)", transition: "800ms" }}
+              >
+                <Image
+                  src={el?.img}
+                  margin="auto"
+                  // _hover={{ transform: "scale(1.4)", transition: "800ms" }}
+                />
+                <Text fontWeight={"500"}>{el?.name}</Text>
+              </Stack>
+            </Link>
           );
         })}
       </Slider>
