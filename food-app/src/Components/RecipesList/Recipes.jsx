@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import styles from "./RecipesCard.module.css";
+import { ArrowBackIcon, ArrowForwardIcon } from "@chakra-ui/icons";
 import {
   getData,
   getDataErr,
@@ -10,11 +11,12 @@ import {
   getDataSucc,
 } from "../../Redux/dataReducer/action";
 import { RecipeCard } from "./RecipeCard";
-import { Image, Text } from "@chakra-ui/react";
+import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import { useState } from "react";
 
 export const Recipes = () => {
   const { recipe } = useParams();
-
+  const [page, setPage] = useState(1);
   const dispatch = useDispatch();
   const { data } = useSelector((store) => store.dataReducer);
   useEffect(() => {
@@ -35,7 +37,39 @@ export const Recipes = () => {
         <Text>Filter Box</Text>
       </div>
       <div className={styles.recipes_card_box}>
-        <div>
+        <Flex
+          border={"1px  solid red"}
+          padding="10px"
+          alignItems={"center"}
+          justifyContent="center"
+        >
+          <Flex border={"1px solid "}>
+            <Text fontSize={"2xl"} fontWeight="500" color={"var(--text-color)"}>
+              Recipes related to {recipe}
+            </Text>
+          </Flex>
+          <Flex alignItems={"center"} gap="10px" border={"1px solid red"}>
+            <Button
+              borderRadius={"100%"}
+              colorScheme="green"
+              variant={"ghost"}
+              isDisabled={page == 1}
+              color="green.200"
+            >
+              <ArrowBackIcon />
+            </Button>
+            <Text fontWeight={"500"}>{page}</Text>
+            <Button
+              borderRadius={"100%"}
+              colorScheme="green"
+              variant={"ghost"}
+              color="green.200"
+            >
+              <ArrowForwardIcon />
+            </Button>
+          </Flex>
+        </Flex>
+        <div className={styles.recipes_cards}>
           {data?.map((el) => {
             return (
               <Link to="/">

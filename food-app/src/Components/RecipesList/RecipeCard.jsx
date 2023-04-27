@@ -1,5 +1,6 @@
 import { Button, Image, Stack, Text } from "@chakra-ui/react";
 import React from "react";
+import { useState } from "react";
 
 export const RecipeCard = ({ image, title }) => {
   return (
