@@ -12,11 +12,10 @@
 }
 .recipes_card_box {
   flex: 3;
-
   border: 2px solid teal;
 }
 
-.recipes_card_box > div {
+.recipes_cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;

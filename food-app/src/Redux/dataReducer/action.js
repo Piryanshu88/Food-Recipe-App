@@ -18,8 +18,8 @@ export const getDataErr = () => {
   };
 };
 
-export const getData = (q) => {
+export const getData = (q, off = 0) => {
   return axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=97c7f7ae16d04c8f94bdf953267ed0da&query=${q}`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=97c7f7ae16d04c8f94bdf953267ed0da&query=${q}&offset=${off}`
   );
 };

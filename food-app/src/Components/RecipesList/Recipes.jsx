@@ -17,6 +17,7 @@ import { useState } from "react";
 export const Recipes = () => {
   const { recipe } = useParams();
   const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
   const dispatch = useDispatch();
   const { data } = useSelector((store) => store.dataReducer);
   useEffect(() => {
@@ -24,7 +25,7 @@ export const Recipes = () => {
       .then((re) => {
         dispatch(getDataReq());
         dispatch(getDataSucc(re.data.results));
-        console.log(data);
+        setMaxPage(Math.ceil(re.data.totalResults / 10));
       })
       .catch((err) => {
         console.log(err.message);
@@ -38,17 +39,16 @@ export const Recipes = () => {
       </div>
       <div className={styles.recipes_card_box}>
         <Flex
-          border={"1px  solid red"}
           padding="10px"
           alignItems={"center"}
-          justifyContent="center"
+          justifyContent="space-between"
         >
-          <Flex border={"1px solid "}>
+          <Flex>
             <Text fontSize={"2xl"} fontWeight="500" color={"var(--text-color)"}>
               Recipes related to {recipe}
             </Text>
           </Flex>
-          <Flex alignItems={"center"} gap="10px" border={"1px solid red"}>
+          <Flex alignItems={"center"} gap="10px">
             <Button
               borderRadius={"100%"}
               colorScheme="green"
@@ -60,6 +60,7 @@ export const Recipes = () => {
             </Button>
             <Text fontWeight={"500"}>{page}</Text>
             <Button
+              isDisabled={page == maxPage}
               borderRadius={"100%"}
               colorScheme="green"
               variant={"ghost"}
