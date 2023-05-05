@@ -11,10 +11,28 @@ import {
   getDataSucc,
 } from "../../Redux/dataReducer/action";
 import { RecipeCard } from "./RecipeCard";
-import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Checkbox,
+  Flex,
+  Image,
+  Radio,
+  RadioGroup,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
+  Stack,
+  Text,
+  Slider,
+  Tooltip,
+  SliderMark,
+} from "@chakra-ui/react";
 import { useState } from "react";
 
 export const Recipes = () => {
+  const [sliderValue, setSliderValue] = React.useState(10);
+  const [showTooltip, setShowTooltip] = React.useState(false);
+
   const { recipe } = useParams();
   const [page, setPage] = useState(1);
   const [maxPage, setMaxPage] = useState(1);
@@ -51,7 +69,93 @@ export const Recipes = () => {
   return (
     <div className={styles.recipes_box}>
       <div className={styles.recipes_filter_box}>
-        <Text>Filter Box</Text>
+        <Stack>
+          <Text color={"var(--text-color)"} fontWeight="500" fontSize={"18px"}>
+            Sort By Calories
+          </Text>
+          <RadioGroup value={""}>
+            <Stack>
+              <Radio value="1">Sort by low to high</Radio>
+              <Radio value="2">Sort by high to low</Radio>
+            </Stack>
+          </RadioGroup>
+        </Stack>
+
+        <Stack>
+          <Text color={"var(--text-color)"} fontWeight="500" fontSize={"18px"}>
+            Meal Type
+          </Text>
+          <Stack>
+            <Checkbox>Main Course</Checkbox>
+            <Checkbox>Side Dish</Checkbox>
+            <Checkbox>Dessert</Checkbox>
+            <Checkbox>Breakfast</Checkbox>
+            <Checkbox>Snack</Checkbox>
+          </Stack>
+        </Stack>
+
+        <Stack>
+          <Text color={"var(--text-color)"} fontWeight="500" fontSize={"18px"}>
+            Preparation Time
+          </Text>
+          <Stack>
+            <Checkbox>Max 20 minutes</Checkbox>
+            <Checkbox>Max 30 minutes</Checkbox>
+            <Checkbox>Max 40 minutes</Checkbox>
+            <Checkbox>Max 50 minutes</Checkbox>
+            <Checkbox>More than 1 hour</Checkbox>
+          </Stack>
+        </Stack>
+
+        <Stack>
+          <Text color={"var(--text-color)"} fontWeight="500" fontSize={"18px"}>
+            Instructions Required
+          </Text>
+          <RadioGroup value={""}>
+            <Stack>
+              <Radio value="1">Yes</Radio>
+              <Radio value="2">No</Radio>
+            </Stack>
+          </RadioGroup>
+        </Stack>
+
+        <Stack>
+          <Text color={"var(--text-color)"} fontWeight="500" fontSize={"18px"}>
+            Protien
+          </Text>
+          <Slider
+            id="slider"
+            min={10}
+            max={100}
+            colorScheme="teal"
+            onChange={(v) => setSliderValue(v)}
+            onMouseEnter={() => setShowTooltip(true)}
+            onMouseLeave={() => setShowTooltip(false)}
+          >
+            <SliderMark value={25} mt="1" ml="-2.5" fontSize="sm">
+              25 grams
+            </SliderMark>
+            <SliderMark value={50} mt="1" ml="-2.5" fontSize="sm">
+              50 grams
+            </SliderMark>
+            <SliderMark value={75} mt="1" ml="-2.5" fontSize="sm">
+              75 grams
+            </SliderMark>
+            <SliderTrack>
+              <SliderFilledTrack />
+            </SliderTrack>
+            <Tooltip
+              hasArrow
+              bg="teal.500"
+              color="white"
+              placement="top"
+              isOpen={showTooltip}
+              label={`${sliderValue} grams`}
+            >
+              <SliderThumb />
+            </Tooltip>
+          </Slider>
+        </Stack>
       </div>
       <div className={styles.recipes_card_box}>
         <Flex
