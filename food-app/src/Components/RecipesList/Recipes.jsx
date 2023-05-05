@@ -20,6 +20,22 @@ export const Recipes = () => {
   const [maxPage, setMaxPage] = useState(1);
   const dispatch = useDispatch();
   const { data } = useSelector((store) => store.dataReducer);
+
+  // pagination
+  const handlePage = (v) => {
+    setPage(page + v);
+    getData(recipe, page + v)
+      .then((re) => {
+        dispatch(getDataReq());
+        dispatch(getDataSucc(re.data.results));
+        setMaxPage(Math.ceil(re.data.totalResults / 10));
+      })
+      .catch((err) => {
+        console.log(err.message);
+        dispatch(getDataErr());
+      });
+  };
+
   useEffect(() => {
     getData(recipe)
       .then((re) => {
@@ -55,6 +71,7 @@ export const Recipes = () => {
               variant={"ghost"}
               isDisabled={page == 1}
               color="green.200"
+              onClick={() => handlePage(-1)}
             >
               <ArrowBackIcon />
             </Button>
@@ -65,6 +82,7 @@ export const Recipes = () => {
               colorScheme="green"
               variant={"ghost"}
               color="green.200"
+              onClick={() => handlePage(1)}
             >
               <ArrowForwardIcon />
             </Button>

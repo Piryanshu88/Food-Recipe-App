@@ -15,7 +15,7 @@ export const reducer = (state = initstate, { type, payload }) => {
       return {
         ...state,
         isLoading: false,
-        data: [...state.data, ...payload],
+        data: payload,
       };
     case types.GET_DATA_ERR:
       return {
